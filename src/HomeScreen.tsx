@@ -168,21 +168,6 @@ export const HomeScreen = ({route}: any) => {
     await connect();
   };
 
-  const handlePrint = async () => {
-    try {
-      const Printer = printerList[selectedValue];
-      Printer.printText('<C>sample text</C>', {
-        cut: false,
-      });
-      Printer.printImage(
-        'https://sportshub.cbsistatic.com/i/2021/04/09/9df74632-fde2-421e-bc6f-d4bf631bf8e5/one-piece-trafalgar-law-wano-anime-1246430.jpg',
-      );
-      Printer.printBill('<C>sample text</C>');
-    } catch (err) {
-      console.warn(err);
-    }
-  };
-
   const handlePrintBill = async () => {
     try {
       const getDataURL = () => {
@@ -333,7 +318,7 @@ export const HomeScreen = ({route}: any) => {
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={[styles.button, {backgroundColor: 'blue'}]}
-            onPress={handlePrint}>
+            onPress={handlePrintBill}>
             <Text style={styles.text}>Print sample</Text>
           </TouchableOpacity>
         </View>
