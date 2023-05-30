@@ -24,7 +24,6 @@ ThermalPrinterModule.defaultConfig = {
 };
 
 const text =
-  '[C]<img>https://via.placeholder.com/300.jpg</img>\n' +
   '[L]\n' +
   "[C]<u><font size='big'>ORDER N°045</font></u>\n" +
   '[L]\n' +
