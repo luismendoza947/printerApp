@@ -36,7 +36,7 @@ function App(): JSX.Element {
     try {
       setErrorMessage('')
       await ThermalPrinterModule.printBluetooth({
-        payload: 'Hello Pavemint!',
+        payload: "[C]<qrcode size='20'>http://www.pavemint.com/</qrcode>",
         printerNbrCharactersPerLine: 38,
       });
       console.log('PRINT>>>')
