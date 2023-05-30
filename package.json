@@ -10,10 +10,19 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-picker/picker": "^2.4.10",
+    "@react-navigation/native": "^6.1.6",
+    "@react-navigation/native-stack": "^6.9.12",
+    "@react-navigation/stack": "^6.3.16",
     "react": "18.2.0",
     "react-native": "0.71.8",
     "react-native-ble-manager": "^10.0.2",
-    "react-native-thermal-printer": "^2.3.6"
+    "react-native-gesture-handler": "^2.10.1",
+    "react-native-ping": "^1.2.7",
+    "react-native-qrcode-svg": "^6.2.0",
+    "react-native-svg": "^13.9.0",
+    "react-native-thermal-printer": "^2.3.6",
+    "react-native-thermal-receipt-printer-image-qr": "^0.1.11"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
