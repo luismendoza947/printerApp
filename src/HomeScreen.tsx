@@ -18,15 +18,12 @@ import {
   IUSBPrinter,
   IBLEPrinter,
   INetPrinter,
-  ColumnAlignment,
-  COMMANDS,
 } from 'react-native-thermal-receipt-printer-image-qr';
 import Loading from './Loading';
 import {DeviceType} from './FindPrinter';
 import {navigate} from './Navigator';
 import QRCode from 'react-native-qrcode-svg';
 import {useRef} from 'react';
-import {Buffer} from 'buffer';
 
 const printerList: Record<string, any> = {
   ble: BLEPrinter,
@@ -48,7 +45,6 @@ export enum DevicesEnum {
 }
 
 const deviceWidth = Dimensions.get('window').width;
-const EscPosEncoder = require('esc-pos-encoder');
 
 export const HomeScreen = ({route}: any) => {
   const [selectedValue, setSelectedValue] = React.useState<
@@ -182,38 +178,12 @@ export const HomeScreen = ({route}: any) => {
             imageWidth: 200,
             imageHeight: 200,
           });
-        } else {
-          // optional for android
-          // android
-          const Printer = printerList[selectedValue];
-          const encoder = new EscPosEncoder();
-          let _encoder = encoder
-            .initialize()
-            .align('center')
-            .line('BILLING')
-            .qrcode('https://nielsleenheer.com')
-            .encode();
-          let base64String = Buffer.from(_encoder).toString('base64');
-          Printer.printRaw(base64String);
         }
       };
       getDataURL();
     } catch (err) {
       console.warn(err);
     }
-  };
-
-  const handlePrintBillWithImage = async () => {
-    const Printer: typeof NetPrinter = printerList[selectedValue];
-    Printer.printImage(
-      'https://media-cdn.tripadvisor.com/media/photo-m/1280/1b/3a/bd/b5/the-food-bill.jpg',
-      {
-        imageWidth: 575,
-        // imageHeight: 1000,
-        // paddingX: 100
-      },
-    );
-    Printer.printBill('', {beep: false});
   };
 
   const handleChangePrinterType = async (type: keyof typeof printerList) => {
@@ -320,22 +290,6 @@ export const HomeScreen = ({route}: any) => {
             style={[styles.button, {backgroundColor: 'blue'}]}
             onPress={handlePrintBill}>
             <Text style={styles.text}>Print sample</Text>
-          </TouchableOpacity>
-        </View>
-        {/* Button Print bill */}
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={[styles.button, {backgroundColor: 'blue'}]}
-            onPress={handlePrintBill}>
-            <Text style={styles.text}>Print bill</Text>
-          </TouchableOpacity>
-        </View>
-        {/* Button Print bill With Image */}
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={[styles.button, {backgroundColor: 'blue'}]}
-            onPress={handlePrintBillWithImage}>
-            <Text style={styles.text}>Print bill With Image</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.qr}>
