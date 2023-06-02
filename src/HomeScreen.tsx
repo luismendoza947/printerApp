@@ -202,6 +202,10 @@ export const HomeScreen = ({route}: any) => {
     setSelectedNetPrinter({...selectedNetPrinter, host: text});
   };
 
+  const goToScanner = () => {
+    navigate('Scanner')
+  }
+
   const _renderNet = () => (
     <>
       <Text style={[styles.text, {color: 'black', marginLeft: 0}]}>
@@ -290,6 +294,14 @@ export const HomeScreen = ({route}: any) => {
             style={[styles.button, {backgroundColor: 'blue'}]}
             onPress={handlePrintBill}>
             <Text style={styles.text}>Print sample</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={[styles.button, {backgroundColor: 'green'}]}
+            onPress={goToScanner}
+          >
+            <Text style={styles.text}>Go to Scanner</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.qr}>
